@@ -1,4 +1,4 @@
-package com.securepipe.secure_pipeline;
+package com.securepipe.securepipeline;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

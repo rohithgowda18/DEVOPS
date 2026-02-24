@@ -1,6 +1,11 @@
 package com.securepipe.securepipeline.model;
 
-import jakarta.persistence.*;
+import java.time.LocalDateTime;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class AuditLog {
@@ -9,28 +14,43 @@ public class AuditLog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String filePath;
+    private String fileName;
 
-    @Column(length = 5000)
-    private String redactedContent;
+    private int secretsFound;
 
+    private LocalDateTime scanTime;
+
+    // Default constructor
+    // Touch: forced update for recompilation
     public AuditLog() {}
 
-    public AuditLog(String filePath, String redactedContent) {
-        this.filePath = filePath;
-        this.redactedContent = redactedContent;
+    // Getters and Setters
+
+    public Long getId() {
+        return id;
     }
 
-    // Getters and Setters
-    public Long getId() { return id; }
+    public String getFileName() {
+        return fileName;
+    }
 
-    public String getFilePath() { return filePath; }
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
 
-    public void setFilePath(String filePath) { this.filePath = filePath; }
+    public int getSecretsFound() {
+        return secretsFound;
+    }
 
-    public String getRedactedContent() { return redactedContent; }
+    public void setSecretsFound(int secretsFound) {
+        this.secretsFound = secretsFound;
+    }
 
-    public void setRedactedContent(String redactedContent) {
-        this.redactedContent = redactedContent;
+    public LocalDateTime getScanTime() {
+        return scanTime;
+    }
+
+    public void setScanTime(LocalDateTime scanTime) {
+        this.scanTime = scanTime;
     }
 }
